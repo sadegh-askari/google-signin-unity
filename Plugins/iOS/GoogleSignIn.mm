@@ -184,7 +184,10 @@ bool GoogleSignIn_Configure(void *unused, bool useGameSignIn,
                             bool requestIdToken, bool hidePopups,
                             const char **additionalScopes, int scopeCount,
                             const char *accountName) {
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"GoogleService-Info" ofType:@"plist"];
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"GoogleAuth-Info" ofType:@"plist"];
+    if (path == nil) {
+        path = [[NSBundle mainBundle] pathForResource:@"GoogleService-Info" ofType:@"plist"];
+    }
     NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:path];
     NSString *clientId = [dict objectForKey:@"CLIENT_ID"];
     GIDConfiguration* config = [[GIDConfiguration alloc] initWithClientID:clientId];
