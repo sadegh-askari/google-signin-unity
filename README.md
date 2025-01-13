@@ -67,8 +67,7 @@ So Thaina have add an editor tool `PListProcessor` that look for plist files in 
 The plist file in the project should be downloaded from Google Cloud Console credential page.
 
 > [!IMPORTANT]  
-> For instance, you have already setup firebase. So you already have keys from example.
-> If you want use separate client id for google sign in, you can create GoogleAuth-Info.plist file.
+> Create GoogleAuth-Info.plist file for google sign in data.
 
 Example of plist file.
 ```xml
