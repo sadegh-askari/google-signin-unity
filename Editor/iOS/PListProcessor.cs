@@ -18,9 +18,9 @@ public class PListProcessor : IPostprocessBuildWithReport
 
     public void OnPostprocessBuild(BuildReport report)
     {
-#if UNITY_IOS
+#if UNITY_IOS || !UNITY_EDITOR_WIN
 		string projectBundleId = PlayerSettings.GetApplicationIdentifier(BuildTargetGroup.iOS);
-		var plistFiles = AssetDatabase.FindAssets("glob:\"**/*.plist\"").Select((guid) => {
+		var plistFiles = AssetDatabase.FindAssets("glob:\"GoogleAuth-Info.plist\"").Select((guid) => {
 			var doc = new PlistDocument();
 			doc.ReadFromFile(AssetDatabase.GUIDToAssetPath(guid));
 			return doc;
