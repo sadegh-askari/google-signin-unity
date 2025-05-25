@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 using System.Net;
 using System.Net.NetworkInformation;
-
+using System.Web;
 using UnityEngine;
 
 using Newtonsoft.Json.Linq;
@@ -105,7 +105,7 @@ namespace Google.Impl
           Debug.Log(task);
           var context = task.Result;
           var queryString = context.Request.Url.Query;
-          var queryDictionary = System.Web.HttpUtility.ParseQueryString(queryString);
+          var queryDictionary = HttpUtility.ParseQueryString(queryString);
           if(queryDictionary == null || queryDictionary.Get("code") is not string code || string.IsNullOrEmpty(code))
           {
             Status = GoogleSignInStatusCode.INVALID_ACCOUNT;
