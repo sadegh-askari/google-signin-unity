@@ -86,8 +86,7 @@ namespace Google {
       get {
         if (theInstance == null) {
 #if UNITY_EDITOR || UNITY_STANDALONE
-          theInstance = new GoogleSignIn(null);
-          throw new SignInException(GoogleSignInStatusCode.DEVELOPER_ERROR,"This platform is not supported by GoogleSignIn");
+          theInstance = new GoogleSignIn(new GoogleSignInImplEditor(Configuration));
 #elif UNITY_ANDROID || UNITY_IOS
           theInstance = new GoogleSignIn(new GoogleSignInImpl(Configuration));
 #else
